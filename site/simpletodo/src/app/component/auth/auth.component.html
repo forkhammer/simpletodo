@@ -1,0 +1,29 @@
+<div class="auth">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form name='authForm' class="auth__form" (submit)='submitForm()' *ngIf='globals.user==null'>
+          <h1 class="auth__title">Авторизуйтесь</h1>
+          <div class="auth__error alert alert-danger" *ngIf='errorMessage'>{{errorMessage}}</div>
+          <div class="auth__error alert alert-danger" *ngFor='let error of errors'>{{error}}</div>
+          <div>
+            <label for="inputEmail" class="sr-only">Email</label>
+            <input id="inputEmail" class="form-control" placeholder="Email" 
+              required="" type="email" [(ngModel)]='username' name='username'>
+          </div>
+          <div>
+            <label for="inputPassword" class="sr-only">Пароль</label>
+            <input id="inputPassword" class="form-control" placeholder="Пароль" 
+              required="" type="password" [(ngModel)]='password' name='password'>
+          </div>
+          
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
+        </form>
+
+        <div class="auth__logged" *ngIf='globals.user!=null'>
+          Вы успешно авторизовались, {{globals.user.first_name}}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

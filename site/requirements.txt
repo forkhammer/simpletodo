@@ -1,0 +1,6 @@
+django
+djangorestframework
+django-configurations
+pylint
+mysqlclient
+django-cors-headers

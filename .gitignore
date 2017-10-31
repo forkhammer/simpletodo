@@ -1,0 +1,5 @@
+site/simpletodo/node_modules
+mysql/data
+env
+*.pyc
+__pycache__

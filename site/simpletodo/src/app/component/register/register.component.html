@@ -1,0 +1,38 @@
+<div class="register">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <form name='registerForm' class="register__form" (submit)='submitForm()' *ngIf='!registerComplete'>
+          <h1 class="register__title">Зарегистрируйтесь</h1>
+          <div class="auth__error alert alert-danger" *ngIf='errorMessage'>{{errorMessage}}</div>
+          <div class="auth__error alert alert-danger" *ngFor='let error of errors'>{{error}}</div>
+          <div>
+            <label for="inputEmail" class="sr-only">Имя</label>
+            <input id="inputFirtsname" class="form-control" placeholder="Имя" 
+              required="" type="text" [(ngModel)]='first_name' name='first_name'>
+          </div>
+          <div>
+            <label for="inputLastname" class="sr-only">Фамилия</label>
+            <input id="inputLastname" class="form-control" placeholder="Фамилия" 
+              required="" type="text" [(ngModel)]='last_name' name='last_name'>
+          </div>
+          <div>
+            <label for="inputEmail" class="sr-only">Email</label>
+            <input id="inputEmail" class="form-control" placeholder="Email" 
+              required="" type="email" [(ngModel)]='username' name='username'>
+          </div>
+          <div>
+            <label for="inputPassword" class="sr-only">Пароль</label>
+            <input id="inputPassword" class="form-control" placeholder="Пароль" 
+              required="" type="password" [(ngModel)]='password' name='password'>
+          </div>
+          
+          <button class="btn btn-lg btn-primary btn-block" type="submit">Вход</button>
+        </form>
+
+        <p class='register__complete' *ngIf='registerComplete'>Регистрация завершена</p>
+      </div>
+    </div>
+  </div>
+</div>
+

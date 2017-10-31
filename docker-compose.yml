@@ -1,0 +1,48 @@
+
+version: '2'
+
+services:
+  site:
+    build: 
+      context: ./site
+      dockerfile: Dockerfile
+    ports:
+     - "8000:8000"
+    volumes:
+     - ./site:/var/www
+     - ./logs:/var/www/logs
+    environment:
+     - DEBUG=1
+     - DJANGO_CONFIGURATION=Dev
+     - DJANGO_SETTINGS_MODULE=main.settings
+     - PYTHONUNBUFFERED=1
+    links:
+     - mysql
+     - phpmyadmin
+
+  mysql:
+    image: mysql:latest
+    expose:
+     - "3306"
+    volumes:
+     - ./mysql/data:/var/lib/mysql
+     - ./mysql/mysqld.cnf:/etc/mysql/mysql.conf.d/mysqld.cnf
+    environment:
+     - MYSQL_ROOT_PASSWORD=1
+     - MYSQL_DATABASE=todo
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    ports:
+     - "9000:80"
+    links:
+     - mysql:db
+
+  front:
+    image: togofront
+    build: ./front
+    command: npm start
+    volumes:
+     - ./site/simpletodo:/var/www/
+    ports:
+     - "4200:4200"

@@ -1,0 +1,47 @@
+<div class="todo-list">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+
+        <div *ngIf='globals.user===null'>
+          <p>Для просмотра списка задач авторизуйтесь или зарегистрируйтесь</p>
+        </div>
+
+        <div *ngIf='globals.user!==null'>
+          <ul class="nav">
+            <li class="nav-item">
+              <a routerLink='/create' class="nav-link btn btn-primary">Создать задачу</a>
+            </li>
+          </ul>
+
+          <table class="table table-hover table-condensed">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Дата</th>
+                <th>Время</th>
+                <th>Описание</th>
+                <th>&nbsp;</th>
+                <th>&nbsp;</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor='let item of items'>
+                <td>{{item.id}}</td>
+                <td>{{item.date}}</td>
+                <td>{{item.time}}</td>
+                <td>{{item.desc}}</td>
+                <td>
+                  <a routerLink='/detail/{{item.id}}' class="btn btn-primary">Изменить</a>
+                </td>
+                <td>
+                  <a href='#' class="btn btn-danger" (click)='delete($event, item)'>Удалить</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

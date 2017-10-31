@@ -1,0 +1,27 @@
+<div class="todo-form">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1 class="todo-form__title" *ngIf='todo.id'>Задача №{{todo.id}}</h1>
+        <h1 class="todo-form__title" *ngIf='!todo.id'>Создание задачи</h1>
+        <div class="auth__error alert alert-danger" *ngFor='let error of errors'>{{error}}</div>
+        <form name='todoForm' (submit)='save()'>
+          <div class="form-group">
+            <label for="id_date">Дата</label>
+            <input type="date" name='date' id='id_date' [(ngModel)]='todo.date' class='form-control'>
+          </div>
+          <div class="form-group">
+              <label for="id_time">Время</label>
+              <input type="text" name='time' id='id_time' [(ngModel)]='todo.time' class='form-control'>
+          </div>
+          <div class="form-group">
+              <label for="id_desc">Описание</label>
+              <textarea name='desc' id='id_desc' [(ngModel)]='todo.desc' rows="5" class='form-control'></textarea>
+          </div>
+
+          <button class="btn btn-primary">Сохранить</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
