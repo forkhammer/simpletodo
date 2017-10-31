@@ -10,3 +10,7 @@ docker-compose up site
 Доступ в Mysql через PhpMyAdmin по адресу http://localhost:9000. Логин/пароль - root/1
 
 Сайт запускается о адресу http://localhost:8000
+
+## Превьюшка
+
+![Превьюшка][./preview.png]
