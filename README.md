@@ -13,4 +13,4 @@ docker-compose up site
 
 ## Превьюшка
 
-![Превьюшка][./preview.png]
+![Превьюшка](/preview.png)
